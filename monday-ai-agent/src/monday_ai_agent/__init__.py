@@ -15,11 +15,15 @@ model = smolagents.OpenAIServerModel(
     client=client,
 )
 
-# Connect to your Monday MCP server (assuming you have monday_server.py in same directory)
+# Use official Monday.com MCP server
+# Use Python-based Monday MCP server (no npm needed!)
 params = mcp.StdioServerParameters(
-    command="python",
-    args=["src/monday_ai_agent/monday_server.py"],
-    env={"MONDAY_API_KEY": os.environ["MONDAY_API_KEY"]}
+    command="uvx",
+    args=["mcp-server-monday"],
+    env={
+        "MONDAY_API_KEY": os.getenv("MONDAY_API_KEY"),
+        "MONDAY_WORKSPACE_NAME": os.getenv("MONDAY_WORKSPACE_NAME")
+    }
 )
 
 def main() -> None:
