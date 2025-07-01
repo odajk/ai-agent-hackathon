@@ -18,7 +18,7 @@ model = smolagents.OpenAIServerModel(
 # Connect to your Monday MCP server (assuming you have monday_server.py in same directory)
 params = mcp.StdioServerParameters(
     command="python",
-    args=["src/oda_to_productivity/monday_server.py"],
+    args=["src/monday_ai_agent/monday_server.py"],
     env={"MONDAY_API_KEY": os.environ["MONDAY_API_KEY"]}
 )
 
